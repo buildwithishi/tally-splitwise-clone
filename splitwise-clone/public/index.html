@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tally — split expenses with anyone</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">¶</span>
+        <span class="brand-name">Tally</span>
+      </div>
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="ledger">Ledger</button>
+        <button class="tab" data-tab="people">People</button>
+        <button class="tab" data-tab="settle">Settle up</button>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- LEDGER VIEW -->
+      <section class="view active" id="view-ledger">
+
+        <div class="panel add-expense">
+          <h2 class="panel-title">Add an expense</h2>
+          <form id="expense-form">
+            <div class="field-row">
+              <div class="field grow">
+                <label for="exp-description">What was it for?</label>
+                <input type="text" id="exp-description" placeholder="e.g. Groceries, Auto fare, Wifi bill" required />
+              </div>
+              <div class="field amount-field">
+                <label for="exp-amount">Amount</label>
+                <div class="amount-input">
+                  <span class="currency">₹</span>
+                  <input type="number" id="exp-amount" placeholder="0" min="0.01" step="0.01" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="exp-paidby">Paid by</label>
+                <select id="exp-paidby" required></select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Split among</label>
+              <div class="split-among" id="split-among"></div>
+            </div>
+
+            <button type="submit" class="btn-primary">Add to ledger</button>
+            <p class="form-error" id="expense-error"></p>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">Recent expenses</h2>
+          <div class="receipt-list" id="expense-list">
+            <p class="empty-state">No expenses yet. The first one is always the hardest.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- PEOPLE VIEW -->
+      <section class="view" id="view-people">
+
+        <div class="panel">
+          <h2 class="panel-title">Add a person</h2>
+          <form id="person-form" class="inline-form">
+            <input type="text" id="person-name" placeholder="Name" required />
+            <button type="submit" class="btn-primary">Add</button>
+          </form>
+          <p class="form-error" id="person-error"></p>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">Everyone in this group</h2>
+          <ul class="people-list" id="people-list">
+            <li class="empty-state">No one added yet. Add yourself and your group first.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- SETTLE VIEW -->
+      <section class="view" id="view-settle">
+
+        <div class="panel">
+          <h2 class="panel-title">Current balances</h2>
+          <div class="balance-list" id="balance-list">
+            <p class="empty-state">Add some expenses to see balances.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">Who should pay whom</h2>
+          <p class="panel-sub">The smallest set of payments that settles everything.</p>
+          <div class="settlement-list" id="settlement-list">
+            <p class="empty-state">Nothing to settle yet.</p>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="foot">
+      <span id="toast" class="toast"></span>
+    </footer>
+
+  </div>
+
+<script src="/app.js"></script>
+</body>
+</html>

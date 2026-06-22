@@ -1,0 +1,13 @@
+{
+  "name": "splitwise-clone",
+  "version": "1.0.0",
+  "description": "A tiny self-hosted expense splitter for households, trips, and friend groups.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT"
+}
